@@ -12,7 +12,7 @@ ENV GEM_HOME /fluentd/vendor/bundle/ruby/3.2.0
 # skip runtime bundler installation
 ENV FLUENTD_DISABLE_BUNDLER_INJECTION 1
 
-COPY Gemfile* /fluentd/
+COPY docker-image/v1.16/debian-insightops/Gemfile* /fluentd/
 RUN buildDeps="sudo make gcc g++ libc-dev libffi-dev" \
   runtimeDeps="" \
       && apt-get update \
