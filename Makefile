@@ -12,46 +12,47 @@
 
 IMAGE_NAME := fluent/fluentd-kubernetes
 X86_IMAGES := \
-	v1.16/debian-azureblob:v1.16.5-debian-azureblob-amd64-1.0,v1.16-debian-azureblob-amd64-2 \
-	v1.16/debian-elasticsearch8:v1.16.5-debian-elasticsearch8-amd64-1.0,v1.16-debian-elasticsearch8-amd64-2 \
-	v1.16/debian-elasticsearch7:v1.16.5-debian-elasticsearch7-amd64-1.0,v1.16-debian-elasticsearch7-amd64-2,v1-debian-elasticsearch-amd64 \
-	v1.16/debian-opensearch:v1.16.5-debian-opensearch-amd64-1.0,v1.16-debian-opensearch-amd64-2 \
-	v1.16/debian-loggly:v1.16.5-debian-loggly-amd64-1.0,v1.16-debian-loggly-amd64-2 \
-	v1.16/debian-logentries:v1.16.5-debian-logentries-amd64-1.0,v1.16-debian-logentries-amd64-2 \
-	v1.16/debian-cloudwatch:v1.16.5-debian-cloudwatch-amd64-1.0,v1.16-debian-cloudwatch-amd64-2 \
-	v1.16/debian-s3:v1.16.5-debian-s3-amd64-1.0,v1.16-debian-s3-amd64-2 \
-	v1.16/debian-syslog:v1.16.5-debian-syslog-amd64-1.0,v1.16-debian-syslog-amd64-2 \
-	v1.16/debian-forward:v1.16.5-debian-forward-amd64-1.0,v1.16-debian-forward-amd64-2 \
-	v1.16/debian-gcs:v1.16.5-debian-gcs-amd64-1.0,v1.16-debian-gcs-amd64-2 \
-	v1.16/debian-graylog:v1.16.5-debian-graylog-amd64-1.0,v1.16-debian-graylog-amd64-2 \
-	v1.16/debian-papertrail:v1.16.5-debian-papertrail-amd64-1.0,v1.16-debian-papertrail-amd64-2 \
-	v1.16/debian-logzio:v1.16.5-debian-logzio-amd64-1.0,v1.16-debian-logzio-amd64-2 \
-	v1.16/debian-kafka:v1.16.5-debian-kafka-amd64-1.0,v1.16-debian-kafka-amd64-2 \
-	v1.16/debian-kafka2:v1.16.5-debian-kafka2-amd64-1.0,v1.16-debian-kafka2-amd64-2 \
-	v1.16/debian-kinesis:v1.16.5-debian-kinesis-amd64-1.0,v1.16-debian-kinesis-amd64-2
+	v1.16/debian-insightops:v1.16.5-debian-insightops-amd64-1.0,v1.16-debian-insightops-amd64-2
+	# v1.16/debian-azureblob:v1.16.5-debian-azureblob-amd64-1.0,v1.16-debian-azureblob-amd64-2 \
+	# v1.16/debian-elasticsearch8:v1.16.5-debian-elasticsearch8-amd64-1.0,v1.16-debian-elasticsearch8-amd64-2 \
+	# v1.16/debian-elasticsearch7:v1.16.5-debian-elasticsearch7-amd64-1.0,v1.16-debian-elasticsearch7-amd64-2,v1-debian-elasticsearch-amd64 \
+	# v1.16/debian-opensearch:v1.16.5-debian-opensearch-amd64-1.0,v1.16-debian-opensearch-amd64-2 \
+	# v1.16/debian-loggly:v1.16.5-debian-loggly-amd64-1.0,v1.16-debian-loggly-amd64-2 \
+	# v1.16/debian-logentries:v1.16.5-debian-logentries-amd64-1.0,v1.16-debian-logentries-amd64-2 \
+	# v1.16/debian-cloudwatch:v1.16.5-debian-cloudwatch-amd64-1.0,v1.16-debian-cloudwatch-amd64-2 \
+	# v1.16/debian-s3:v1.16.5-debian-s3-amd64-1.0,v1.16-debian-s3-amd64-2 \
+	# v1.16/debian-syslog:v1.16.5-debian-syslog-amd64-1.0,v1.16-debian-syslog-amd64-2 \
+	# v1.16/debian-forward:v1.16.5-debian-forward-amd64-1.0,v1.16-debian-forward-amd64-2 \
+	# v1.16/debian-gcs:v1.16.5-debian-gcs-amd64-1.0,v1.16-debian-gcs-amd64-2 \
+	# v1.16/debian-graylog:v1.16.5-debian-graylog-amd64-1.0,v1.16-debian-graylog-amd64-2 \
+	# v1.16/debian-papertrail:v1.16.5-debian-papertrail-amd64-1.0,v1.16-debian-papertrail-amd64-2 \
+	# v1.16/debian-logzio:v1.16.5-debian-logzio-amd64-1.0,v1.16-debian-logzio-amd64-2 \
+	# v1.16/debian-kafka:v1.16.5-debian-kafka-amd64-1.0,v1.16-debian-kafka-amd64-2 \
+	# v1.16/debian-kafka2:v1.16.5-debian-kafka2-amd64-1.0,v1.16-debian-kafka2-amd64-2 \
+	# v1.16/debian-kinesis:v1.16.5-debian-kinesis-amd64-1.0,v1.16-debian-kinesis-amd64-2
 
 #	<Dockerfile>:<version>,<tag1>,<tag2>,...
 
-ARM64_IMAGES := \
-	v1.16/arm64/debian-azureblob:v1.16.5-debian-azureblob-arm64-1.0,v1.16-debian-azureblob-arm64-2 \
-	v1.16/arm64/debian-elasticsearch8:v1.16.5-debian-elasticsearch8-arm64-1.0,v1.16-debian-elasticsearch8-arm64-2 \
-	v1.16/arm64/debian-elasticsearch7:v1.16.5-debian-elasticsearch7-arm64-1.0,v1.16-debian-elasticsearch7-arm64-2,v1-debian-elasticsearch-arm64 \
-	v1.16/arm64/debian-opensearch:v1.16.5-debian-opensearch-arm64-1.0,v1.16-debian-opensearch-arm64-2 \
-	v1.16/arm64/debian-loggly:v1.16.5-debian-loggly-arm64-1.0,v1.16-debian-loggly-arm64-2 \
-	v1.16/arm64/debian-logentries:v1.16.5-debian-logentries-arm64-1.0,v1.16-debian-logentries-arm64-2 \
-	v1.16/arm64/debian-cloudwatch:v1.16.5-debian-cloudwatch-arm64-1.0,v1.16-debian-cloudwatch-arm64-2 \
-	v1.16/arm64/debian-s3:v1.16.5-debian-s3-arm64-1.0,v1.16-debian-s3-arm64-2 \
-	v1.16/arm64/debian-syslog:v1.16.5-debian-syslog-arm64-1.0,v1.16-debian-syslog-arm64-2 \
-	v1.16/arm64/debian-forward:v1.16.5-debian-forward-arm64-1.0,v1.16-debian-forward-arm64-2 \
-	v1.16/arm64/debian-gcs:v1.16.5-debian-gcs-arm64-1.0,v1.16-debian-gcs-arm64-2 \
-	v1.16/arm64/debian-graylog:v1.16.5-debian-graylog-arm64-1.0,v1.16-debian-graylog-arm64-2 \
-	v1.16/arm64/debian-papertrail:v1.16.5-debian-papertrail-arm64-1.0,v1.16-debian-papertrail-arm64-2 \
-	v1.16/arm64/debian-logzio:v1.16.5-debian-logzio-arm64-1.0,v1.16-debian-logzio-arm64-2 \
-	v1.16/arm64/debian-kafka:v1.16.5-debian-kafka-arm64-1.0,v1.16-debian-kafka-arm64-2 \
-	v1.16/arm64/debian-kafka2:v1.16.5-debian-kafka2-arm64-1.0,v1.16-debian-kafka2-arm64-2 \
+# ARM64_IMAGES := \
+# 	v1.16/arm64/debian-azureblob:v1.16.5-debian-azureblob-arm64-1.0,v1.16-debian-azureblob-arm64-2 \
+# 	v1.16/arm64/debian-elasticsearch8:v1.16.5-debian-elasticsearch8-arm64-1.0,v1.16-debian-elasticsearch8-arm64-2 \
+# 	v1.16/arm64/debian-elasticsearch7:v1.16.5-debian-elasticsearch7-arm64-1.0,v1.16-debian-elasticsearch7-arm64-2,v1-debian-elasticsearch-arm64 \
+# 	v1.16/arm64/debian-opensearch:v1.16.5-debian-opensearch-arm64-1.0,v1.16-debian-opensearch-arm64-2 \
+# 	v1.16/arm64/debian-loggly:v1.16.5-debian-loggly-arm64-1.0,v1.16-debian-loggly-arm64-2 \
+# 	v1.16/arm64/debian-logentries:v1.16.5-debian-logentries-arm64-1.0,v1.16-debian-logentries-arm64-2 \
+# 	v1.16/arm64/debian-cloudwatch:v1.16.5-debian-cloudwatch-arm64-1.0,v1.16-debian-cloudwatch-arm64-2 \
+# 	v1.16/arm64/debian-s3:v1.16.5-debian-s3-arm64-1.0,v1.16-debian-s3-arm64-2 \
+# 	v1.16/arm64/debian-syslog:v1.16.5-debian-syslog-arm64-1.0,v1.16-debian-syslog-arm64-2 \
+# 	v1.16/arm64/debian-forward:v1.16.5-debian-forward-arm64-1.0,v1.16-debian-forward-arm64-2 \
+# 	v1.16/arm64/debian-gcs:v1.16.5-debian-gcs-arm64-1.0,v1.16-debian-gcs-arm64-2 \
+# 	v1.16/arm64/debian-graylog:v1.16.5-debian-graylog-arm64-1.0,v1.16-debian-graylog-arm64-2 \
+# 	v1.16/arm64/debian-papertrail:v1.16.5-debian-papertrail-arm64-1.0,v1.16-debian-papertrail-arm64-2 \
+# 	v1.16/arm64/debian-logzio:v1.16.5-debian-logzio-arm64-1.0,v1.16-debian-logzio-arm64-2 \
+# 	v1.16/arm64/debian-kafka:v1.16.5-debian-kafka-arm64-1.0,v1.16-debian-kafka-arm64-2 \
+# 	v1.16/arm64/debian-kafka2:v1.16.5-debian-kafka2-arm64-1.0,v1.16-debian-kafka2-arm64-2 \
 	v1.16/arm64/debian-kinesis:v1.16.5-debian-kinesis-arm64-1.0,v1.16-debian-kinesis-arm64-2
 
-ALL_IMAGES := $(X86_IMAGES) $(ARM64_IMAGES)
+ALL_IMAGES := $(X86_IMAGES) # $(ARM64_IMAGES)
 
 comma := ,
 empty :=
@@ -92,6 +93,9 @@ image:
 
 parsed-tags = $(subst $(comma), $(space), $(TAGS))
 
+image-buildah:
+	buildah bud $(no-cache-arg) -t $(IMAGE_NAME):$(VERSION) -f docker-image/$(DOCKERFILE)
+
 # Tag Docker image with given tags.
 #
 # Usage:
@@ -99,6 +103,11 @@ parsed-tags = $(subst $(comma), $(space), $(TAGS))
 tags:
 	(set -e ; $(foreach tag, $(parsed-tags), \
 		docker tag $(IMAGE_NAME):$(VERSION) $(IMAGE_NAME):$(tag) ; \
+	))
+
+tags-buildah:
+	(set -e ; $(foreach tag, $(parsed-tags), \
+		buildah tag $(IMAGE_NAME):$(VERSION) $(IMAGE_NAME):$(tag) ; \
 	))
 
 # Manually push Docker images to Docker Hub.
@@ -110,11 +119,18 @@ push:
 		docker push $(IMAGE_NAME):$(tag) ; \
 	))
 
+push-buildah:
+	(set -e ; $(foreach tag, $(parsed-tags), \
+		buildah push $(IMAGE_NAME):$(tag) ; \
+	))
+
 # Make manual release of Docker images to Docker Hub.
 #
 # Usage:
 #	make release [no-cache=(yes|no)] [DOCKERFILE=] [VERSION=] [TAGS=t1,t2,...]
 release: | image tags push
+
+release-buildah: | image-buildah tags-buildah push-buildah
 
 # Make manual release of all supported Docker images to Docker Hub.
 #
@@ -136,7 +152,7 @@ release-all:
 #
 # Usage:
 #	make src [DOCKERFILE=] [VERSION=] [TAGS=t1,t2,...]
-src: dockerfile gemfile fluent.conf systemd.conf prometheus.conf kubernetes.conf plugins post-push-hook post-checkout-hook entrypoint.sh cluster-autoscaler.conf containers.conf docker.conf etcd.conf glbc.conf kube-apiserver-audit.conf kube-apiserver.conf kube-controller-manager.conf kube-proxy.conf kube-scheduler.conf kubelet.conf rescheduler.conf salt.conf startupscript.conf tail_container_parse.conf .github/dependabot.yml
+src: dockerfile fluent.conf systemd.conf prometheus.conf kubernetes.conf plugins post-push-hook post-checkout-hook entrypoint.sh cluster-autoscaler.conf containers.conf docker.conf etcd.conf glbc.conf kube-apiserver-audit.conf kube-apiserver.conf kube-controller-manager.conf kube-proxy.conf kube-scheduler.conf kubelet.conf rescheduler.conf salt.conf startupscript.conf tail_container_parse.conf .github/dependabot.yml
 
 # Generate sources for all supported Docker images.
 #
