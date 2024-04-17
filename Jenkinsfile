@@ -1,11 +1,10 @@
 
-
 def getShortCommitHash() {
-  return sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
+    return sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
 }
 
 def getImageName() {
-    return sh(returnStdout: true, script: "make print-IMAGE_NAME").trim()
+    return sh(returnStdout: true, script: 'make print-IMAGE_NAME').trim()
 }
 
 pipeline {
@@ -17,7 +16,6 @@ pipeline {
         disableConcurrentBuilds()
         buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '25', numToKeepStr: '10'))
     }
-
 
     // agent { label 'ssh-slave'}
     agent {
@@ -42,17 +40,16 @@ pipeline {
         }
     }
 
-
     environment {
-        VERSION = "v1.16"
-        COMPLETE_VERSION = "${VERSION}.2"
+        VERSION = 'v1.16'
+        COMPLETE_VERSION = "${VERSION}.5"
 
         SHORT_COMMIT = getShortCommitHash()
         // IMAGE_NAME = getImageName()
 
         NEXUS_DOCKER_CREDS = credentials('nexus_docker_registry_creds')
-        NEXUS_DOCKER_HOST = "docker.freeda.tech"
-        NEXUS_DOCKER_URL="https://${NEXUS_DOCKER_HOST}/repository/docker"
+        NEXUS_DOCKER_HOST = 'docker.freeda.tech'
+        NEXUS_DOCKER_URL = "https://${NEXUS_DOCKER_HOST}/repository/docker"
     }
 
     stages {
@@ -71,12 +68,12 @@ pipeline {
     post {
         success {
             container('buildah') {
-                slackSend (color: '#54D843', message: "[SUCCESS] '${env.JOB_NAME}' -> commit '${SHORT_COMMIT}': pipeline ended successfully.")
+                slackSend(color: '#54D843', message: "[SUCCESS] '${env.JOB_NAME}' -> commit '${SHORT_COMMIT}': pipeline ended successfully.")
             }
         }
         failure {
             container('buildah') {
-                slackSend (color: '#F4322C', message: "[FAILED] '${env.JOB_NAME}' -> commit '${SHORT_COMMIT}': pipeline aborted.")
+                slackSend(color: '#F4322C', message: "[FAILED] '${env.JOB_NAME}' -> commit '${SHORT_COMMIT}': pipeline aborted.")
             }
         }
     }
