@@ -32,17 +32,17 @@ RUN buildDeps="sudo make gcc g++ libc-dev libffi-dev" \
     && gem sources --clear-all \
     && rm -rf /tmp/* /var/tmp/* /usr/lib/ruby/gems/*/cache/*.gem
 # Copy configuration files
-COPY ./conf/fluent.conf /fluentd/etc/
-COPY ./conf/systemd.conf /fluentd/etc/
-COPY ./conf/kubernetes.conf /fluentd/etc/
-COPY ./conf/prometheus.conf /fluentd/etc/
-COPY ./conf/tail_container_parse.conf /fluentd/etc/
-COPY ./conf/kubernetes/*.conf /fluentd/etc/kubernetes/
+COPY docker-image/v1.16/debian-insightops/conf/fluent.conf /fluentd/etc/
+COPY docker-image/v1.16/debian-insightops/conf/systemd.conf /fluentd/etc/
+COPY docker-image/v1.16/debian-insightops/conf/kubernetes.conf /fluentd/etc/
+COPY docker-image/v1.16/debian-insightops/conf/prometheus.conf /fluentd/etc/
+COPY docker-image/v1.16/debian-insightops/conf/tail_container_parse.conf /fluentd/etc/
+COPY docker-image/v1.16/debian-insightops/conf/kubernetes/*.conf /fluentd/etc/kubernetes/
 RUN touch /fluentd/etc/disable.conf
 
 # Copy plugins
-COPY plugins /fluentd/plugins/
-COPY entrypoint.sh /fluentd/entrypoint.sh
+COPY docker-image/v1.16/debian-insightops/plugins /fluentd/plugins/
+COPY docker-image/v1.16/debian-insightops/entrypoint.sh /fluentd/entrypoint.sh
 
 # Environment variables
 ENV FLUENTD_OPT=""
