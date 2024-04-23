@@ -47,6 +47,7 @@ COPY docker-image/v1.16/debian-insightops/entrypoint.sh /fluentd/entrypoint.sh
 # Environment variables
 ENV FLUENTD_OPT=""
 ENV FLUENTD_CONF="fluent.conf"
+ENV LD_PRELOAD=
 
 # Overwrite ENTRYPOINT to run fluentd as root for /var/log / /var/lib
 ENTRYPOINT ["tini", "--", "/fluentd/entrypoint.sh"]
